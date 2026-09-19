@@ -52,35 +52,36 @@
 </style>
 </head>
 <body>
-<h1><span><img src="icons/icon128.png" alt="">Sift</span>
+<h1><span><img src="icons/icon128.png" alt=""><span data-i18n="extensionName">Sift</span></span>
   <label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label>
 </h1>
-<div class="warn" id="warn">Not connected yet — <a href="#" id="setup">set up in 1 minute</a>.</div>
-<div class="muted" id="paused">Paused · <a href="#" id="resume">resume now</a></div>
+<div class="warn" id="warn"><span data-i18n="popupNotConnected">Not connected yet — </span><a href="#" id="setup" data-i18n="popupSetupLink">set up in 1 minute</a><span data-i18n="period">.</span></div>
+<div class="muted" id="paused"><span data-i18n="popupPaused">Paused · </span><a href="#" id="resume" data-i18n="popupResumeNow">resume now</a></div>
 
-<div class="label">Show me</div>
+<div class="label" data-i18n="popupShowMe">Show me</div>
 <div class="seg" id="preset"></div>
 <div class="desc" id="presetDesc"></div>
 
 <div class="block">
-  <div class="label">How strictly "tech"</div>
+  <div class="label" data-i18n="popupTechStrictness">How strictly "tech"</div>
   <div class="seg small" id="strict"></div>
 </div>
 
 <details>
-  <summary><span>Customize labels</span></summary>
+  <summary><span data-i18n="popupCustomizeLabels">Customize labels</span></summary>
   <div id="cats"></div>
 </details>
 
 <div class="rowbtn">
-  <button id="showAll">Show hidden here</button>
-  <button id="pause">Pause 1 h</button>
+  <button id="showAll" data-i18n="popupShowHidden">Show hidden here</button>
+  <button id="pause" data-i18n="popupPauseOneHour">Pause 1 h</button>
 </div>
 
 <div class="foot">
-  <a href="#" id="openOpts">All settings</a>
+  <a href="#" id="openOpts" data-i18n="popupAllSettings">All settings</a>
   <span class="muted" id="spent"></span>
 </div>
+<script src="i18n.js"></script>
 <script src="defaults.js"></script>
 <script src="popup.js"></script>
 </body>

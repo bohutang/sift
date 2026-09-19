@@ -1,0 +1,8 @@
+{
+  "name": "sift-x",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/jev-pipeline.test.js tests/ui-controls.test.js",
+    "measure:jev": "node scripts/measure-jev.js"
+  }
+}

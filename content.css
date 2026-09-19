@@ -40,7 +40,7 @@ html[data-sift-sidebar="off"] [data-testid="primaryColumn"] > div > div { max-wi
 .sift-bar-why { color: var(--sift-fg); opacity: .7; overflow: hidden; text-overflow: ellipsis; }
 .sift-bar-why::before { content: "·"; margin-right: 8px; opacity: .6; }
 .sift-bar.sift-open { border-bottom-style: dashed; }
-.sift-bar.sift-open .sift-bar-who::before { content: "Shown"; margin-right: 8px; opacity: .6; font-weight: 400; }
+.sift-bar.sift-open .sift-bar-who::before { content: attr(data-sift-shown); margin-right: 8px; opacity: .6; font-weight: 400; }
 
 .sift-actions { flex: none; display: flex; align-items: center; gap: 2px; position: relative; }
 .sift-show, .sift-more {

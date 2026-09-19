@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Sift",
-  "short_name": "Sift",
-  "version": "0.8.7",
-  "description": "Labels every post and reply on X (Substance, Humor, Chit-chat, Promo, Junk, AI-written) with TypeSafe Jev. You choose what to hide.",
+  "name": "__MSG_extensionName__",
+  "short_name": "__MSG_extensionName__",
+  "version": "0.9.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "permissions": [
     "storage",
     "activeTab",
@@ -24,6 +25,7 @@
         "https://twitter.com/*"
       ],
       "js": [
+        "i18n.js",
         "defaults.js",
         "content.js"
       ],
@@ -39,7 +41,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Sift",
+    "default_title": "__MSG_extensionName__",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",

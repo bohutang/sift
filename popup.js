@@ -1,10 +1,11 @@
+globalThis.XQF_localize?.();
 const $ = (id) => document.getElementById(id);
 let settings, counts = {};
 
 const STRICT = [
-  { key: "relaxed", label: "Relaxed", value: 0.35, desc: "Only clearly non-tech posts are hidden" },
-  { key: "normal",  label: "Normal",  value: 0.5,  desc: "" },
-  { key: "strict",  label: "Strict",  value: 0.65, desc: "Anything not clearly tech is hidden" }
+  { key: "relaxed", label: XQF_t("strictRelaxedLabel", undefined, "Relaxed"), value: 0.35, desc: XQF_t("strictRelaxedDescription", undefined, "Only clearly non-tech posts are hidden") },
+  { key: "normal",  label: XQF_t("strictNormalLabel", undefined, "Normal"), value: 0.5, desc: XQF_t("strictNormalDescription", undefined, "") },
+  { key: "strict",  label: XQF_t("strictStrictLabel", undefined, "Strict"), value: 0.65, desc: XQF_t("strictStrictDescription", undefined, "Anything not clearly tech is hidden") }
 ];
 
 async function activeTab() {
@@ -40,7 +41,7 @@ function renderPreset() {
     await chrome.storage.sync.set({ hide: settings.hide, hideAI: p.hideAI, hideOffTopic: p.hideOffTopic });
     renderPreset(); renderCats();
   });
-  $("presetDesc").textContent = cur ? XQF_PRESETS[cur].desc : "Custom — see labels below";
+  $("presetDesc").textContent = cur ? XQF_PRESETS[cur].desc : XQF_t("presetCustomDescription", undefined, "Custom — see labels below");
 }
 
 function renderStrict() {
@@ -55,9 +56,18 @@ function renderStrict() {
 
 function row(label, hidden, count, onChange) {
   const r = document.createElement("div"); r.className = "cat";
-  r.innerHTML = `<span class="n">${label}</span><span class="cnt">${count || ""}</span>
-    <span class="seg"><button class="show ${hidden ? "" : "active"}">Show</button><button class="hide ${hidden ? "active" : ""}">Hide</button></span>`;
-  const [bs, bh] = r.querySelectorAll("button");
+  const name = document.createElement("span"); name.className = "n"; name.textContent = label;
+  const total = document.createElement("span"); total.className = "cnt"; total.textContent = count || "";
+  const seg = document.createElement("span"); seg.className = "seg";
+  const bs = document.createElement("button");
+  bs.className = `show${hidden ? "" : " active"}`;
+  bs.textContent = XQF_t("show", undefined, "Show");
+  const bh = document.createElement("button");
+  bh.className = `hide${hidden ? " active" : ""}`;
+  bh.textContent = XQF_t("hide", undefined, "Hide");
+  seg.append(bs, bh);
+  r.append(name, total, seg);
+
   const set = (h) => { bs.classList.toggle("active", !h); bh.classList.toggle("active", h); onChange(h); };
   bs.addEventListener("click", () => set(false)); bh.addEventListener("click", () => set(true));
   return r;
@@ -84,7 +94,9 @@ function renderCats() {
 function renderPaused() {
   const paused = settings.pausedUntil > Date.now();
   $("paused").style.display = paused ? "block" : "none";
-  $("pause").textContent = paused ? "Resume" : "Pause 1 h";
+  $("pause").textContent = paused
+    ? XQF_t("popupResumeOneHour", undefined, "Resume")
+    : XQF_t("popupPauseOneHour", undefined, "Pause 1 h");
 }
 
 (async () => {
@@ -101,7 +113,7 @@ function renderPaused() {
   renderPreset(); renderStrict(); renderCats();
 
   const { stats } = await chrome.runtime.sendMessage({ type: "stats" });
-  $("spent").textContent = `${stats.analyzed.toLocaleString()} labelled · $${stats.cost.toFixed(3)}`;
+  $("spent").textContent = XQF_t("statsLabelledCost", [stats.analyzed.toLocaleString(), `$${stats.cost.toFixed(3)}`], "$1 labelled · $2");
 })();
 
 $("enabled").addEventListener("change", (e) => chrome.storage.sync.set({ enabled: e.target.checked, pausedUntil: 0 }));

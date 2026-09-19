@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Sift</title>
+<title data-i18n="extensionName">Sift</title>
 <style>
   :root {
     --bg: #fafafa; --panel: #fff; --line: #e6e6e6; --fg: #111; --muted: #6b6b6b; --faint: #9a9a9a;
@@ -101,17 +101,17 @@
   <header>
     <img src="icons/icon128.png" alt="">
     <h1>Sift</h1>
-    <p>Keep your X feed to substantive tech. Every post gets a label; you choose which to hide.</p>
+    <p data-i18n="optionsHeaderDescription">Keep your X feed to substantive tech. Every post gets a label; you choose which to hide.</p>
   </header>
 
   <section>
-    <h2>Connection<small>Labels come from TypeSafe Jev. About $0.00003 per post.</small></h2>
+    <h2><span data-i18n="optionsConnection">Connection</span><small data-i18n="optionsConnectionDescription">Labels come from TypeSafe Jev. About 0.00003 USD per post.</small></h2>
     <div class="body">
       <div class="field">
-        <label for="apiKey">API key · <a href="https://console.typesafe.ai/keys" target="_blank">get one</a></label>
+        <label for="apiKey"><span data-i18n="optionsApiKey">API key</span> · <a href="https://console.typesafe.ai/keys" target="_blank" data-i18n="optionsGetOne">get one</a></label>
         <div class="inline">
-          <input type="password" id="apiKey" placeholder="tsk_…" autocomplete="off" spellcheck="false">
-          <button class="primary" id="connect">Connect</button>
+          <input type="password" id="apiKey" placeholder="tsk_…" data-i18n-placeholder="optionsApiKeyPlaceholder" autocomplete="off" spellcheck="false">
+          <button class="primary" id="connect" data-i18n="optionsConnect">Connect</button>
         </div>
         <div id="keyStatus"></div>
       </div>
@@ -119,83 +119,84 @@
   </section>
 
   <section>
-    <h2>Labels<small>Changes apply to open pages right away.</small></h2>
+    <h2><span data-i18n="optionsLabels">Labels</span><small data-i18n="optionsLabelsDescription">Changes apply to open pages right away.</small></h2>
     <div class="body">
       <div class="list" id="cats"></div>
     </div>
   </section>
 
   <section>
-    <h2>Behaviour</h2>
+    <h2 data-i18n="optionsBehaviour">Behaviour</h2>
     <div class="body">
       <div class="row">
-        <div><div class="t">Filter replies too</div><div class="d">Replies under a post are labelled and hidden the same way. The post you opened is never hidden.</div></div>
+        <div><div class="t" data-i18n="optionsFilterReplies">Filter replies too</div><div class="d" data-i18n="optionsFilterRepliesDescription">Replies under a post are labelled and hidden the same way. The post you opened is never hidden.</div></div>
         <label class="switch"><input type="checkbox" id="filterReplies"><span></span></label>
       </div>
       <div class="row">
-        <div><div class="t">Show labels on posts</div><div class="d">One small tag next to the author name. The AI-written % only appears when it is 40% or higher.</div></div>
+        <div><div class="t" data-i18n="optionsShowLabels">Show labels on posts</div><div class="d" data-i18n="optionsShowLabelsDescription">One small tag next to the author name. The AI-written % only appears when it is 40% or higher.</div></div>
         <label class="switch"><input type="checkbox" id="showBadges"><span></span></label>
       </div>
       <div class="row">
-        <div><div class="t">Hide the right column</div><div class="d">Right column keeps only the search box; Premium upsell, Today's News, Trending and Who to follow are removed.</div></div>
+        <div><div class="t" data-i18n="optionsHideSidebar">Hide the right column</div><div class="d" data-i18n="optionsHideSidebarDescription">Right column keeps only the search box; Premium upsell, Today's News, Trending and Who to follow are removed.</div></div>
         <label class="switch"><input type="checkbox" id="hideSidebar"><span></span></label>
       </div>
       <div class="row">
-        <div><div class="t">Hidden posts are</div></div>
+        <div><div class="t" data-i18n="optionsHiddenPosts">Hidden posts are</div></div>
         <select id="mode">
-          <option value="hide">Collapsed to one line, with Show / Hide</option>
-          <option value="dim">Dimmed, readable on hover</option>
-          <option value="badge">Labelled only, never hidden</option>
+          <option value="hide" data-i18n="optionsModeHide">Collapsed to one line, with Show / Hide</option>
+          <option value="dim" data-i18n="optionsModeDim">Dimmed, readable on hover</option>
+          <option value="badge" data-i18n="optionsModeBadge">Labelled only, never hidden</option>
         </select>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>People<small>One handle per line, without @. Also available from ⋯ on any hidden post.</small></h2>
+    <h2><span data-i18n="optionsPeople">People</span><small data-i18n="optionsPeopleDescription">One handle per line, without @. Also available from ⋯ on any hidden post.</small></h2>
     <div class="body two">
-      <div class="field"><label for="allowlist">Always show</label><textarea id="allowlist" class="mono" placeholder="paulg&#10;karpathy" spellcheck="false"></textarea></div>
-      <div class="field"><label for="blocklist">Always hide</label><textarea id="blocklist" class="mono" placeholder="somespamaccount" spellcheck="false"></textarea></div>
+      <div class="field"><label for="allowlist" data-i18n="optionsAlwaysShow">Always show</label><textarea id="allowlist" class="mono" placeholder="paulg&#10;karpathy" spellcheck="false"></textarea></div>
+      <div class="field"><label for="blocklist" data-i18n="optionsAlwaysHide">Always hide</label><textarea id="blocklist" class="mono" placeholder="somespamaccount" spellcheck="false"></textarea></div>
     </div>
   </section>
 
   <section>
-    <h2>Stop phrases<small>Matched locally before Jev. A match labels the post Bait, instantly and free.</small></h2>
+    <h2><span data-i18n="optionsStopPhrases">Stop phrases</span><small data-i18n="optionsStopPhrasesDescription">Matched locally before Jev. A match labels the post Bait, instantly and free.</small></h2>
     <div class="body">
       <div class="field">
         <textarea id="stopPhrases" class="mono" spellcheck="false"></textarea>
-        <div class="hint">One regular expression per line, case-insensitive. Lines starting with <code>#</code> are ignored.</div>
-        <div class="actions"><button class="ghost" id="resetPhrases">Reset to defaults</button></div>
+        <div class="hint"><span data-i18n="optionsStopPhrasesHint">One regular expression per line, case-insensitive. Lines starting with </span><code>#</code><span data-i18n="optionsStopPhrasesHintEnd"> are ignored.</span></div>
+        <div class="actions"><button class="ghost" id="resetPhrases" data-i18n="optionsResetPhrases">Reset to defaults</button></div>
       </div>
       <details>
-        <summary>Model</summary>
-        <div class="field"><input type="text" id="model" placeholder="jev-latest" spellcheck="false"></div>
+        <summary data-i18n="optionsModel">Model</summary>
+        <div class="field"><input type="text" id="model" placeholder="jev-1.13.0" spellcheck="false"></div>
       </details>
     </div>
   </section>
 
   <section>
-    <h2>Usage</h2>
+    <h2 data-i18n="optionsUsage">Usage</h2>
     <div class="body">
       <div class="stats">
-        <div class="stat"><b id="sAnalyzed">0</b><span>labelled</span></div>
-        <div class="stat"><b id="sHidden">0</b><span>hidden</span></div>
-        <div class="stat"><b id="sCost">$0</b><span>spent</span></div>
-        <div class="stat"><b id="sErrors">0</b><span>errors</span></div>
+        <div class="stat"><b id="sAnalyzed">0</b><span data-i18n="optionsStatLabelled">labelled</span></div>
+        <div class="stat"><b id="sHidden">0</b><span data-i18n="optionsStatHidden">hidden</span></div>
+        <div class="stat"><b id="sCost">$0</b><span data-i18n="optionsStatSpent">spent</span></div>
+        <div class="stat"><b id="sErrors">0</b><span data-i18n="optionsStatErrors">errors</span></div>
       </div>
       <div class="actions">
-        <button class="ghost" id="clearCache">Re-label everything</button>
-        <button class="ghost" id="resetStats">Reset counters</button>
+        <button class="ghost" id="clearCache" data-i18n="optionsRelabel">Re-label everything</button>
+        <button class="ghost" id="resetStats" data-i18n="optionsResetCounters">Reset counters</button>
       </div>
     </div>
   </section>
 
   <footer>
-    <span id="status">Saved automatically.</span>
-    <button class="ghost" id="save" style="display:none">Save</button>
+    <span id="status" data-i18n="optionsSavedAutomatically">Saved automatically.</span>
+    <button class="ghost" id="save" style="display:none" data-i18n="optionsSave">Save</button>
   </footer>
 </div>
 
+<script src="i18n.js"></script>
 <script src="defaults.js"></script>
 <script src="options.js"></script>
 </body>
